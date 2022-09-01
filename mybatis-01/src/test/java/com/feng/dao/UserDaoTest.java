@@ -32,4 +32,56 @@ public class UserDaoTest {
             sqlSession.close();
         }
     }
+
+    @Test
+    public void getUserById() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserDao mapper = sqlSession.getMapper(UserDao.class);
+        User user = mapper.getUserById(1);
+        System.out.println(user);
+        sqlSession.close();
+    }
+
+    //增删改需要提交事务
+    @Test
+    public void addUser() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserDao mapper = sqlSession.getMapper(UserDao.class);
+        int res = mapper.addUser(new User(4, "王五", "123456"));
+        if (res > 0) {
+            System.out.println("插入成功！");
+            //提交事务
+            sqlSession.commit();
+        }
+        test();
+        sqlSession.close();
+    }
+
+    @Test
+    public void updateUser() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserDao mapper = sqlSession.getMapper(UserDao.class);
+        int res = mapper.updateUser(new User(1, "冯冯", "123123"));
+        if (res > 0) {
+            System.out.println("更新成功！");
+            //提交事务
+            sqlSession.commit();
+        }
+        test();
+        sqlSession.close();
+    }
+
+    @Test
+    public void deleteUser(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserDao mapper = sqlSession.getMapper(UserDao.class);
+        int res = mapper.deleteUser(4);
+        if (res > 0){
+            System.out.println("删除成功！");
+            //提交事务
+            sqlSession.commit();
+        }
+        test();
+        sqlSession.close();
+    }
 }
