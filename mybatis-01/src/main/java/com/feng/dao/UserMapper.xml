@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace=绑定一个对应的Dao/Mapper接口 -->
 <mapper namespace="com.feng.dao.UserDao">
+
+    <select id="getUserLike" parameterType="map" resultType="com.feng.pojo.User">
+        select * from mybatis.user where id like #{id} or name like #{name} or pwd like #{pwd}
+    </select>
     <!-- id=需要实现的接口名 resultType=返回结果 -->
     <select id="getUserList" resultType="com.feng.pojo.User">
         select * from mybatis.user
@@ -13,8 +17,17 @@
         select * from mybatis.user where id = #{id}
     </select>
 
+    <select id="getUserById2" parameterType="map" resultType="com.feng.pojo.User">
+        select * from mybatis.user where id = #{id} or name = #{name}
+    </select>
+
+    <!-- 对象中的属性，可以直接取出来 -->
     <insert id="addUser" parameterType="com.feng.pojo.User">
         insert into mybatis.user (id, name, pwd) values (#{id}, #{name}, #{pwd})
+    </insert>
+
+    <insert id="addUser2" parameterType="map">
+        insert into mybatis.user (id, name, pwd) values (#{userid},#{username}, #{password})
     </insert>
 
     <update id="updateUser" parameterType="com.feng.pojo.User">

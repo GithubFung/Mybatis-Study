@@ -10,23 +10,14 @@ import java.util.Map;
  */
 public interface UserDao {
 
-    //模糊查询
-    List<User> getUserLike(Map<String, Object> map);
-
     //查询全部用户
     List<User> getUserList();
 
     //根据ID查询用户
     User getUserById(int id);
 
-    //万能Map
-    User getUserById2(Map<String, Object> map);
-
     //插入一个用户
     int addUser(User user);
-
-    //万能Map
-    int addUser2(Map<String, Object> map);
 
     //修改用户
     int updateUser(User user);
