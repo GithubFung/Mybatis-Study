@@ -1,0 +1,12 @@
+第一步：
+db.properties
+mybatis-config.xml
+第二步：
+MybatisUtils.java  工具类 获取sqlSessionFactory --> sqlSession
+第三步：
+User.java  实体类
+第四步：
+UserDao.java  接口类/实现类
+UserMapper.xml  SQL
+第五步:
+UserDaoTest.java  测试类  保证项目可以跑通
