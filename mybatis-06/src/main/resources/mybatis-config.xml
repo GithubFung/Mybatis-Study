@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- configuration核心配置文件 -->
+<configuration>
+    <!-- 引入外部配置文件 -->
+    <properties resource="db.properties"/>
+
+    <settings>
+        <!-- 标准日志 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;rewriteBatchedStatements=TRUE"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper class="feng.dao.TeacherMapper"/>
+        <mapper class="feng.dao.StudentMapper"/>
+    </mappers>
+
+</configuration>

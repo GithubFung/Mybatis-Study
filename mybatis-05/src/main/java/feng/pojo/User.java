@@ -12,7 +12,7 @@ import org.apache.ibatis.type.Alias;
 //别名方法二
 @Alias("User")
 //lombok插件，自动生成get set toString等
-// 不支持多种参数构造器的重载，不建议使用
+//不支持多种参数构造器的重载，不建议使用
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
